@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ingresar - AuxilioCR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main>
+    <section class="form-section">
+      <h2>Iniciar Sesión</h2>
+      <form id="loginForm" novalidate>
+        <div>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" required />
+          <div id="emailError" class="error-msg">Por favor, ingresa un correo válido.</div>
+        </div>
+        <div>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" required minlength="6" />
+          <div id="passwordError" class="error-msg">La contraseña debe tener al menos 6 caracteres.</div>
+        </div>
+        <button type="submit" class="btn-primary">Ingresar</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>
