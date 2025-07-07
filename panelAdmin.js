@@ -1,4 +1,3 @@
-// Datos simulados
 const voluntarios = [
   { nombre: "Carlos", tipo: "Socorrista", estado: "Aprobado" },
   { nombre: "Laura", tipo: "Básico", estado: "Pendiente" },
