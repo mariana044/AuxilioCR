@@ -9,43 +9,90 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'admin') {
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Panel de Administración - AuxilioCR</title>
+  <title>Panel de Administracion - AuxilioCR</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .menu-admin {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 400px;
+    .container {
+      max-width: 1000px;
       margin: auto;
-      margin-top: 40px;
+      padding: 2rem;
     }
-
-    .menu-admin a {
-      display: block;
-      background-color: #8a1538;
-      color: white;
-      padding: 15px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
       text-align: center;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
     }
-
-    .menu-admin a:hover {
-      background-color: #5c1026;
+    th {
+      background-color: #006d77;
+      color: white;
+    }
+    .btn {
+      background-color: #008891;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #006d77;
     }
   </style>
 </head>
 <body>
-  <main class="form-section">
-    <h2>Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?> (Administrador)</h2>
-    <div class="menu-admin">
-      <a href="revisarDocumentos.php">📋 Revisar documentos pendientes</a>
-      <a href="historialEmergencias.php">📂 Historial de emergencias</a>
-      <a href="usuariosRegistrados.php">👥 Usuarios registrados</a>
-      <a href="logout.php">🔓 Cerrar sesión</a>
-    </div>
+  <header class="header">
+    <a href="index.php" class="logo">AuxilioCR</a>
+    <nav>
+      <ul class="nav__list">
+        <li><a href="index.php" class="nav__link">Inicio</a></li>
+        <li><a href="logout.php" class="nav__link">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?> (Administrador)</h1>
+
+    <!-- Gestión de Voluntarios -->
+    <section>
+      <h2>Gestión de Voluntarios</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tablaVoluntarios"></tbody>
+      </table>
+    </section>
+
+    <!-- Gestión de Emergencias -->
+    <section>
+      <h2>Gestión de Emergencias</h2>
+      <button class="btn" onclick="mostrarEstadisticas()">Ver estadísticas</button>
+      <div id="estadisticaEmergencias"></div>
+    </section>
+
+    <!-- Gestión del Sistema -->
+    <section>
+      <h2>Gestión del Sistema</h2>
+      <button class="btn" onclick="controlUsuarios()">Control de usuarios</button>
+      <div id="controlUsuariosResultado"></div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 AuxilioCR - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="panelAdmin.js"></script>
 </body>
 </html>
