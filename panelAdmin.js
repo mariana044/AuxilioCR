@@ -34,7 +34,7 @@ function cambiarEstado(index, nuevoEstado) {
 }
 
 function mostrarEstadisticas() {
-  const div = document.getElementById("estadisticasEmergencias");
+  const div = document.getElementById("estadisticaEmergencias");
   div.innerHTML = `
     <p>Total de emergencias atendidas: 42</p>
     <p>Zonas con más reportes: San José, Alajuela</p>
@@ -45,9 +45,9 @@ function controlUsuarios() {
   const div = document.getElementById("controlUsuariosResultado");
   div.innerHTML = `
     <p>Usuarios activos: 25</p>
-    <p>Usuarios baneados: 3</p>
-    <button onclick="alert('Redirigir a gestión avanzada')">Ver más</button>
+    <p>Usuarios bloqueados: 3</p>
+    <button onclick="alert('Redirigir a configuración avanzada')">Ver más</button>
   `;
 }
 
-cargarVoluntarios();
+window.onload = cargarVoluntarios;
