@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Administrador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a href="index.php" class="logo">AuxilioCR</a>
+    <nav>
+      <ul class="nav__list">
+        <li><a href="index.php" class="nav__link">Inicio</a></li>
+        <li><a href="registro.php" class="nav__link">Registro</a></li>
+        <li><a href="PanelAdministrador.html" class="nav__link">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Panel del Administrador</h1>
+
+    <!-- Gestión de Voluntarios -->
+    <section>
+      <h2>Gestión de Voluntarios</h2>
+      <table border="1" style="width:100%; margin-bottom:2rem;">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tablaVoluntarios"></tbody>
+      </table>
+    </section>
+
+    <!-- Gestión de Emergencias -->
+    <section>
+      <h2>Gestión de Emergencias</h2>
+      <button class="btn" onclick="mostrarEstadisticas()">Ver estadísticas</button>
+      <div id="estadisticasEmergencias" style="margin-top:1rem;"></div>
+    </section>
+
+    <!-- Gestión del Sistema -->
+    <section style="margin-top:3rem;">
+      <h2>Gestión del Sistema</h2>
+      <button class="btn" onclick="controlUsuarios()">Control de usuarios</button>
+      <div id="controlUsuariosResultado" style="margin-top:1rem;"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 AuxilioCR - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="admin.js"></script>
+</body>
+</html>
