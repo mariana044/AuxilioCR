@@ -1,27 +1,19 @@
 <?php
-
-require_once 'conexion.php';  
+require_once 'conexionTemplate.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nombre = $conn->real_escape_string($_POST["nombre"]);
-    $correo = $conn->real_escape_string($_POST["correo"]);
-    $tipo = $conn->real_escape_string($_POST["tipo"]);
-    $comentario = $conn->real_escape_string($_POST["comentario"]);
+    $n   = $conn->real_escape_string($_POST["nombre"]);
+    $e   = $conn->real_escape_string($_POST["correo"]);
+    $t   = $conn->real_escape_string($_POST["tipo"]);
+    $p   = $_POST["clave"];
+    $h   = password_hash($p, PASSWORD_DEFAULT);
 
-    if (!empty($nombre) && !empty($correo)) {
-        $sql = "INSERT INTO Usuarios (nombre, correo, tipo, comentario) VALUES ('$nombre', '$correo', '$tipo', '$comentario')";
-        if ($conn->query($sql) === TRUE) {
-            header("Location: registro.php?status=success&nombre=" . urlencode($nombre) . "&tipo=" . urlencode($tipo));
-            exit;
-        } else {
-            die("Error al registrar: " . $conn->error);
-        }
+    $sql = "INSERT INTO Usuarios (nombre, correo, clave, tipo)
+            VALUES ('$n','$e','$h','$t')";
+    if ($conn->query($sql) === TRUE) {
+        header("Location: index.php");
+        exit;
     } else {
-        die("Por favor completá todos los campos obligatorios.");
+        echo "Error al registrar: " . $conn->error;
     }
-} else {
-    die("Acceso no permitido.");
 }
-
-$conn->close();
-?>

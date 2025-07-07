@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reportar Emergencia - AuxilioCR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="form-section">
+    <h2>Reportar una Emergencia</h2>
+    <form method="post" action="procesarEmergencia.php">
+      <label for="ubicacion">Ubicación o Cantón:</label>
+      <input type="text" id="ubicacion" name="ubicacion" required>
+
+      <label for="descripcion">Descripción de la emergencia:</label>
+      <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+      <input type="submit" value="Reportar">
+    </form>
+  </main>
+</body>
+</html>

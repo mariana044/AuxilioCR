@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cargar Documentos - AuxilioCR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="form-section">
+    <h2>Subir Documentos de Validación</h2>
+    <form method="post" action="procesarDocumentos.php" enctype="multipart/form-data">
+      <label for="tipo">Tipo de documento:</label>
+      <select id="tipo" name="tipo">
+        <option value="cedula">Cédula</option>
+        <option value="certificado">Certificado</option>
+        <option value="carne">Carné</option>
+      </select>
+
+      <label for="archivo">Archivo (PDF/JPG/PNG):</label>
+      <input type="file" id="archivo" name="archivo" accept=".pdf,.jpg,.jpeg,.png" required>
+
+      <input type="submit" value="Subir Documento">
+    </form>
+  </main>
+</body>
+</html>

@@ -356,3 +356,27 @@ body {
     padding: 2rem 1rem;
   }
 }
+
+/* Forzar que la lista no haga wrap y desaparezca scrollbar si hay overflow */
+.nav__list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;   /* si no caben, podrás hacer scroll horizontal */
+}
+
+/* Reducir márgenes entre ítems */
+.nav__list li {
+  margin-left: 0.75rem;  /* antes tenías 1.5rem, ahora la mitad */
+}
+
+/* Hacer los botones/links más compactos */
+.nav__link {
+  font-size: 0.85rem;      /* de 0.95rem a 0.85rem */
+  padding: 0.25rem 0.75rem; /* de 0.5rem 0 a 0.25rem arriba/abajo y 0.75rem lados */
+  white-space: nowrap;     /* evita que el texto se divida */
+}
+
+/* Opcional: si quieres que el logo también reduzca un poco */
+.logo {
+  font-size: 1.4rem;       /* de 1.6rem a 1.4rem */
+}
