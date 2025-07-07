@@ -29,6 +29,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <li><a href="historialAsistencia.php" class="nav__link">Historial</a></li>
             <li><a href="recursos.php"            class="nav__link">Recursos</a></li>
             <li><a href="paneladmin.html"         class="nav__link">Panel Admin</a></li>
+            <li><a href="paneladmin.php"         class="nav__link">Panel Admin</a></li>
             <li><a href="logout.php"              class="nav__link">Cerrar Sesión</a></li>
           <?php else: ?>
             <li><a href="inicioSesion.html"       class="nav__link">Iniciar Sesión</a></li>
