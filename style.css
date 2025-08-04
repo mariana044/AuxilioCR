@@ -380,3 +380,46 @@ body {
 .logo {
   font-size: 1.4rem;       /* de 1.6rem a 1.4rem */
 }
+
+.contenedor-recursos {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+.card.guia {
+  border-top: 5px solid #4CAF50;
+}
+
+.card.emergencias {
+  border-top: 5px solid #f44336;
+}
+
+.card.preguntas {
+  border-top: 5px solid #2196F3;
+}
+
+.card h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.card ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.card li {
+  margin-bottom: 10px;
+}
