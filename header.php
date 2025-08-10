@@ -28,7 +28,7 @@ $usuario = $_SESSION['usuario'] ?? null;
       text-decoration: underline;
     }
     .btn-login {
-      margin-left: auto; /* empuja a la derecha */
+      margin-left: auto;
       background-color: white;
       color: #333;
       padding: 6px 12px;
@@ -71,6 +71,9 @@ $usuario = $_SESSION['usuario'] ?? null;
               <li><a href="perfilUsuario.php" class="nav__link">Perfil</a></li>
               <li><a href="cerrarSesion.php" class="nav__link">Cerrar Sesión</a></li>
             <?php endif; ?>
+
+            <li><a href="historialAsistencia.php" class="nav__link">Historial</a></li>
+            <li><a href="recursos.php" class="nav__link">Recursos</a></li>
 
           <?php else: ?>
             <li><a href="index.php" class="nav__link">Inicio</a></li>
