@@ -16,7 +16,7 @@ include 'header.php';
 
     <label for="tipo">Tipo de usuario:</label>
     <select id="tipo" name="tipo">
-      <option value="ciudadano">Ciudadano</option>
+      <option value="usuario">Ciudadano</option>
       <option value="voluntario">Voluntario</option>
     </select>
 

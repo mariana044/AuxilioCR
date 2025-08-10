@@ -6,16 +6,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $correo = $conn->real_escape_string($_POST["correo"]);
     $clave  = $_POST["clave"];
 
-    $sql    = "SELECT * FROM Usuarios WHERE correo = '$correo' LIMIT 1";
+    $sql    = "SELECT * FROM usuarios WHERE correo = '$correo' LIMIT 1";
     $res    = $conn->query($sql);
 
     if ($res && $res->num_rows === 1) {
         $u = $res->fetch_assoc();
-        if (password_verify($clave, $u['clave'])) {
+        if (password_verify($clave, $u['contrasena'])) {
             $_SESSION['usuario'] = [
-              'id'     => $u['id_usuario'],
+              'id'     => $u['id'],
               'nombre' => $u['nombre'],
-              'tipo'   => $u['tipo']
+              'tipo'   => $u['tipo_usuario']
             ];
             header("Location: index.php");
             exit;
