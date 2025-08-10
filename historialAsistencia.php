@@ -5,12 +5,11 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: inicioSesion.html');
     exit;
 }
-include 'conexionTemplate.php';
+include 'conexion.php';
 include 'header.php';
 
 $id = $_SESSION['usuario']['id'];
 
-// Recuperar emergencias en las que participó este usuario (voluntario)
 $sql = "SELECT e.id, e.ubicacion, e.descripcion, e.fecha, e.estado,
                u.nombre AS nombre_reportante
           FROM asistencias a 

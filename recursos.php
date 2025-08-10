@@ -1,8 +1,8 @@
 <?php
 include 'header.php';
-include 'conexionTemplate.php'; 
+include 'conexion.php'; 
 
-// Guías
+
 $guias = $conn->query("SELECT titulo, archivo_url FROM recursos WHERE tipo='guia'");
 $contactos = $conn->query("SELECT titulo, descripcion FROM recursos WHERE tipo='contacto'");
 $faqs = $conn->query("SELECT pregunta, respuesta FROM preguntas_frecuentes");
@@ -11,7 +11,7 @@ $faqs = $conn->query("SELECT pregunta, respuesta FROM preguntas_frecuentes");
 <main class="contenedor-recursos">
   <title>Centro de recursos</title>
 
-  <!-- Guías -->
+
 <section class="card guia">
   <h3>Guías De Primeros Auxilios</h3>
   <ul>
@@ -24,7 +24,6 @@ $faqs = $conn->query("SELECT pregunta, respuesta FROM preguntas_frecuentes");
   </ul>
 </section>
 
-<!-- Números de emergencia -->
 <section class="card emergencias">
   <h3>Números De Emergencia</h3>
   <ul>
@@ -34,7 +33,6 @@ $faqs = $conn->query("SELECT pregunta, respuesta FROM preguntas_frecuentes");
   </ul>
 </section>
 
-<!-- Preguntas frecuentes -->
 <section class="card preguntas">
   <h3>Preguntas Frecuentes</h3>
   <ul>
