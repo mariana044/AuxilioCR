@@ -1,37 +1,35 @@
 <?php
 session_start();
-require_once 'conexionTemplate.php';
+require_once 'conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $correo = $conn->real_escape_string($_POST["correo"]);
-    $clave = $_POST["clave"];
+    $clave = $_POST["contrasena"];
 
-    $sql = "SELECT * FROM Usuarios WHERE correo = '$correo' LIMIT 1";
+    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' LIMIT 1";
     $resultado = $conn->query($sql);
 
     if ($resultado->num_rows === 1) {
         $usuario = $resultado->fetch_assoc();
 
-        // Verificamos la contraseña con password_verify()
-        if (password_verify($clave, $usuario['clave'])) {
+        if (password_verify($clave, $usuario['contrasena'])) {
             $_SESSION['usuario'] = [
                 'id' => $usuario['id_usuario'],
                 'nombre' => $usuario['nombre'],
-                'tipo' => $usuario['tipo']
+                'tipo' => $usuario['tipo_usuario']
             ];
 
-            // Redirección según tipo
-            if ($usuario['tipo'] === 'admin') {
+            if ($usuario['tipo_usuario'] === 'admin') {
                 header("Location: panelAdmin.php");
             } else {
                 header("Location: panelVoluntario.php");
             }
             exit;
-        } else {
-            echo "❌ Contraseña incorrecta.";
+        } else { c 
+            echo "Contraseña incorrecta.";
         }
     } else {
-        echo "❌ Usuario no encontrado.";
+        echo "Usuario no encontrado.";
     }
 } else {
     echo "Acceso no autorizado.";

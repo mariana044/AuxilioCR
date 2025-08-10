@@ -1,17 +1,23 @@
 <?php
-session_start();
-if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'admin') {
-    header("Location: inicioSesion.html");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo_usuario'] !== 'admin') {
+    header('Location: inicioSesion.html');
     exit;
 }
+$usuario = $_SESSION['usuario'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Panel de Administracion - AuxilioCR</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de Administración - AuxilioCR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="panelAdmin.css" />
   <style>
+  
     .container {
       max-width: 1000px;
       margin: auto;
@@ -45,20 +51,12 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'admin') {
   </style>
 </head>
 <body>
-  <header class="header">
-    <a href="index.php" class="logo">AuxilioCR</a>
-    <nav>
-      <ul class="nav__list">
-        <li><a href="index.php" class="nav__link">Inicio</a></li>
-        <li><a href="logout.php" class="nav__link">Cerrar sesión</a></li>
-      </ul>
-    </nav>
-  </header>
+  <?php include 'header.php'; ?>
 
   <main class="container">
-    <h1>Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?> (Administrador)</h1>
+    <h1>Bienvenido, <?php echo htmlspecialchars($usuario['nombre']); ?> (Administrador)</h1>
 
-    <!-- Gestión de Voluntarios -->
+
     <section>
       <h2>Gestión de Voluntarios</h2>
       <table>
@@ -74,14 +72,13 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'admin') {
       </table>
     </section>
 
-    <!-- Gestión de Emergencias -->
     <section>
       <h2>Gestión de Emergencias</h2>
       <button class="btn" onclick="mostrarEstadisticas()">Ver estadísticas</button>
       <div id="estadisticaEmergencias"></div>
     </section>
 
-    <!-- Gestión del Sistema -->
+   
     <section>
       <h2>Gestión del Sistema</h2>
       <button class="btn" onclick="controlUsuarios()">Control de usuarios</button>

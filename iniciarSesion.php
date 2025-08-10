@@ -1,28 +1,50 @@
 <?php
 session_start();
-require_once 'conexionTemplate.php';
+require_once 'conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $correo = $conn->real_escape_string($_POST["correo"]);
-    $clave  = $_POST["clave"];
+    $correo      = $conn->real_escape_string($_POST["correo"]);
+    $contrasena  = $_POST["contrasena"];
 
-    $sql    = "SELECT * FROM usuarios WHERE correo = '$correo' LIMIT 1";
-    $res    = $conn->query($sql);
+    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' LIMIT 1";
+    $res = $conn->query($sql);
 
     if ($res && $res->num_rows === 1) {
-        $u = $res->fetch_assoc();
-        if (password_verify($clave, $u['contrasena'])) {
+        $usuario = $res->fetch_assoc();
+        if (password_verify($contrasena, $usuario['contrasena'])) {
             $_SESSION['usuario'] = [
-              'id'     => $u['id'],
-              'nombre' => $u['nombre'],
-              'tipo'   => $u['tipo_usuario']
+              'id'           => $usuario['id'],
+              'nombre'       => $usuario['nombre'],
+              'correo'       => $usuario['correo'],
+              'tipo_usuario' => $usuario['tipo_usuario']
             ];
-            header("Location: index.php");
+
+            switch ($usuario['tipo_usuario']) {
+                case 'ciudadano':
+                    header("Location: panelCiudadano.php");
+                    break;
+                case 'voluntario':
+                    header("Location: panelVoluntario.php");
+                    break;
+                case 'admin':
+                    header("Location: panelAdmin.php");
+                    break;
+                default:
+                    echo "Tipo de usuario no reconocido.";
+                    exit;
+            }
             exit;
         }
+
+        
     }
-    header("Location: inicioSesion.html?error=1");
+        header("Location: inicioSesion.html?error=1");
     exit;
 } else {
     echo "Acceso denegado.";
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> origin/main

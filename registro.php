@@ -1,5 +1,4 @@
 <?php
-// Formulario de registro
 include 'header.php';
 ?>
 <main class="form-section">
@@ -11,16 +10,19 @@ include 'header.php';
     <label for="correo">Correo electrónico:</label>
     <input type="email" id="correo" name="correo" required>
 
-    <label for="clave">Contraseña:</label>
-    <input type="password" id="clave" name="clave" required>
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contrasena" name="contrasena" required>
 
-    <label for="tipo">Tipo de usuario:</label>
-    <select id="tipo" name="tipo">
-      <option value="usuario">Ciudadano</option>
+    <label for="tipo_usuario">Tipo de usuario:</label>
+    <select id="tipo_usuario" name="tipo_usuario">
+      <option value="ciudadano">Ciudadano</option>
       <option value="voluntario">Voluntario</option>
+       <option value="admin">Admin</option>
     </select>
 
-    <button type="submit" class="btn">Enviar</button>
+    <button type="submit" class="btn">Registrarme</button>
   </form>
 </main>
 <?php include 'footer.php'; ?>
+
+
