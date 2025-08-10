@@ -380,3 +380,304 @@ body {
 .logo {
   font-size: 1.4rem;       /* de 1.6rem a 1.4rem */
 }
+
+
+.perfil-box {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.perfil-box h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.perfil-box p {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.perfil-box h3 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+.historial-item {
+  background-color: #fff;
+  border-left: 5px solid #3498db;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.historial-item strong {
+  color: #2c3e50;
+}
+
+
+
+/* Registro exitoso */
+.success-section {
+  max-width: 500px;
+  margin: 4rem auto;
+  background-color: #f8f9fa;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: #003366;
+}
+
+.success-section h1 {
+  color: #b22222;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.success-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #33475b;
+}
+
+.success-section a {
+  display: inline-block;
+  background-color: #b22222;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.success-section a:hover {
+  background-color: #7a1616;
+  transform: translateY(-2px);
+}
+
+/* Panel Voluntario */
+.voluntario-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.voluntario-bienvenida {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+
+.voluntario-bienvenida h1 {
+  color: #b22222;
+  margin-bottom: 0.5rem;
+}
+
+.voluntario-bienvenida p {
+  color: #003366;
+  font-size: 1.1rem;
+}
+
+.voluntario-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.btn-voluntario {
+  background-color: #b22222;
+  color: white;
+  padding: 0.7rem 1.4rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-voluntario:hover {
+  background-color: #7a1616;
+  transform: translateY(-2px);
+}
+
+.btn-voluntario.salir {
+  background-color: #555;
+}
+
+.btn-voluntario.salir:hover {
+  background-color: #333;
+}
+
+.voluntario-info {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.voluntario-info h2 {
+  color: #003366;
+  margin-bottom: 1rem;
+}
+
+
+
+/* Sobre Nosotros */
+.nosotros-container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+}
+
+.nosotros-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.nosotros-header h1 {
+    color: #b22222;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.nosotros-header p {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.nosotros-mision-vision {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.nosotros-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    flex: 1 1 300px;
+}
+
+.nosotros-card h2 {
+    color: #003366;
+    margin-bottom: 1rem;
+}
+
+.nosotros-card ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.nosotros-equipo {
+    text-align: center;
+}
+
+.equipo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.equipo-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    width: 250px;
+    text-align: center;
+}
+
+.equipo-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.equipo-card h3 {
+    color: #b22222;
+    margin-bottom: 0.5rem;
+}
+
+.equipo-card p {
+    color: #555;
+}
+
+.form-section {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  color: #003366;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-section h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #b22222;
+  text-align: center;
+}
+
+.form-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-section ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-section ul li a {
+  display: block;
+  background-color: #b22222;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.form-section ul li a:hover {
+  background-color: #7a1616;
+}
+
+@media (max-width: 480px) {
+  .form-section {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+}

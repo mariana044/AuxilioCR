@@ -39,10 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($conn->query($sql)) {
             echo "✅ Documento subido correctamente.";
         } else {
-            echo "❌ Error al registrar en BD: " . $conn->error;
+            echo "Error al registrar en BD: " . $conn->error;
         }
     } else {
-        echo "❌ No se pudo mover el archivo.";
+        echo "No se pudo mover el archivo.";
     }
 } else {
     echo "Método no permitido.";
