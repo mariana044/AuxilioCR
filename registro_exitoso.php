@@ -9,8 +9,7 @@
   <main class="success-section">
     <h1>¡Registro exitoso!</h1>
     <p>Gracias por registrarte. Tu cuenta ha sido creada correctamente.</p>
-    <a href="inicioSesion.html">Iniciar sesión</a>
+    <a href="iniciarSesion.php" class="btn">Iniciar sesión</a>
   </main>
 </body>
 </html>
-

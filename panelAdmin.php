@@ -3,9 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo_usuario'] !== 'admin') {
-    header('Location: inicioSesion.html');
+    header('Location: iniciarSesion.php');  
     exit;
 }
+
 $usuario = $_SESSION['usuario'];
 ?>
 <!DOCTYPE html>

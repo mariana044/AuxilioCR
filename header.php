@@ -1,7 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+if (session_status() === PHP_SESSION_NONE) session_start();
+require_once __DIR__ . '/config.php';
 $usuario = $_SESSION['usuario'] ?? null;
 ?>
 <!DOCTYPE html>
@@ -10,92 +9,61 @@ $usuario = $_SESSION['usuario'] ?? null;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AuxilioCR</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="<?= BASE_URL ?>style.css" />
   <style>
-    .nav__list {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .nav__link {
-      text-decoration: none;
-      color: #fff;
-    }
-    .nav__link:hover {
-      text-decoration: underline;
-    }
-   
-    .btn-login, .btn-register, .btn-logout {
-      background-color: transparent !important;
-      color: #fff !important;
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      border: none;
-    }
-    .btn-login:hover, .btn-register:hover, .btn-logout:hover {
-      background-color: #fff !important;
-      color: #333 !important;
-      cursor: pointer;
-    }
-    
-    .right-buttons {
-      margin-left: auto;
-      display: flex;
-      gap: 10px;
-    }
+    .nav__list{display:flex;align-items:center;gap:15px;list-style:none;margin:0;padding:0;}
+    .nav__link{text-decoration:none;color:#fff;}
+    .nav__link:hover{text-decoration:underline;}
+    .btn-login,.btn-register,.btn-logout{background:transparent!important;color:#fff!important;padding:6px 12px;border-radius:4px;font-weight:bold;transition:.3s;border:none;}
+    .btn-login:hover,.btn-register:hover,.btn-logout:hover{background:#fff!important;color:#333!important;cursor:pointer;}
+    .right-buttons{margin-left:auto;display:flex;gap:10px;}
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <a href="index.php" class="logo">AuxilioCR</a>
+<header class="header">
+  <div class="container">
+    <a href="<?= BASE_URL ?>index.php" class="logo">AuxilioCR</a>
+    <nav>
+      <ul class="nav__list">
+        <?php if ($usuario): ?>
+          <li><a class="nav__link" href="#"><?= htmlspecialchars($usuario['nombre']) ?></a></li>
 
-      <nav>
-        <ul class="nav__list">
-          <?php if ($usuario): ?>
-            <li><a href="#" class="nav__link">Hola, <?= htmlspecialchars($usuario['nombre']) ?></a></li>
+          <?php if ($usuario['tipo_usuario'] === 'admin'): ?>
+            <li><a class="nav__link" href="<?= BASE_URL ?>panelAdmin.php">Panel Admin</a></li>
+            <li><a class="nav__link" href="<?= BASE_URL ?>gestionar_voluntarios.php">Voluntarios</a></li>
+            <li><a class="nav__link" href="<?= BASE_URL ?>gestionar_emergencias.php">Emergencias</a></li>
 
-            <?php if ($usuario['tipo_usuario'] === 'admin'): ?>
-              <li><a href="panelAdmin.php" class="nav__link">Panel Admin</a></li>
-              <li><a href="gestionar_voluntarios.php" class="nav__link">Voluntarios</a></li>
-              <li><a href="gestionar_emergencias.php" class="nav__link">Emergencias</a></li>
+          <?php elseif ($usuario['tipo_usuario'] === 'voluntario'): ?>
+            <li><a class="nav__link" href="<?= BASE_URL ?>eventos_disponibles.php">Eventos</a></li>
 
-            <?php elseif ($usuario['tipo_usuario'] === 'voluntario'): ?>
-              <li><a href="eventos_disponibles.php" class="nav__link">Eventos</a></li>
-
-            <?php elseif ($usuario['tipo_usuario'] === 'ciudadano'): ?>
-              <li><a href="panelCiudadano.php" class="nav__link">Inicio</a></li>
-              <li><a href="index.php" class="nav__link">¿Cómo Funciona?</a></li>
-              <li><a href="index.php" class="nav__link">Beneficios</a></li>
-              <li><a href="sobreNosotros.html" class="nav__link">Sobre Nosotros</a></li>
-              <li><a href="emergencia.php" class="nav__link">Emergencia</a></li>
-            <?php endif; ?>
-
-            <li><a href="historialAsistencia.php" class="nav__link">Historial</a></li>
-            <li><a href="recursos.php" class="nav__link">Recursos</a></li>
-            <li><a href="perfilUsuario.php" class="nav__link">Perfil</a></li>
-
-            <div class="right-buttons">
-              <li><a href="cerrarSesion.php" class="nav__link btn-logout">Cerrar Sesión</a></li>
-            </div>
-
-          <?php else: ?>
-            <li><a href="index.php" class="nav__link">Inicio</a></li>
-            <li><a href="index.php#como-funciona" class="nav__link">¿Cómo Funciona?</a></li>
-            <li><a href="index.php#features" class="nav__link">Beneficios</a></li>
-            <li><a href="sobreNosotros.html" class="nav__link">Sobre Nosotros</a></li>
-
-            <div class="right-buttons">
-              <li><a href="registro.php" class="nav__link btn-register">Registrarme</a></li>
-              <li><a href="iniciarSesion.php" class="nav__link btn-login">Iniciar Sesión</a></li>
-            </div>
+          <?php elseif ($usuario['tipo_usuario'] === 'ciudadano'): ?>
+            <li><a class="nav__link" href="<?= BASE_URL ?>panelCiudadano.php">Inicio</a></li>
+            <li><a class="nav__link" href="<?= BASE_URL ?>index.php#como-funciona">¿Cómo Funciona?</a></li>
+            <li><a class="nav__link" href="<?= BASE_URL ?>index.php#features">Beneficios</a></li>
+            <li><a class="nav__link" href="<?= BASE_URL ?>sobreNosotros.html">Sobre Nosotros</a></li>
+            <li><a class="nav__link" href="<?= BASE_URL ?>emergencia.php">Emergencia</a></li>
           <?php endif; ?>
-        </ul>
-      </nav>
-    </div>
-  </header>
+
+          <li><a class="nav__link" href="<?= BASE_URL ?>historialAsistencia.php">Historial</a></li>
+          <li><a class="nav__link" href="<?= BASE_URL ?>recursos.php">Recursos</a></li>
+          <li><a class="nav__link" href="<?= BASE_URL ?>perfilUsuario.php">Perfil</a></li>
+
+          <div class="right-buttons">
+            <li><a class="nav__link btn-logout" href="<?= BASE_URL ?>cerrarSesion.php">Cerrar Sesión</a></li>
+          </div>
+
+        <?php else: ?>
+          <li><a class="nav__link" href="<?= BASE_URL ?>index.php">Inicio</a></li>
+          <li><a class="nav__link" href="<?= BASE_URL ?>index.php#como-funciona">¿Cómo Funciona?</a></li>
+          <li><a class="nav__link" href="<?= BASE_URL ?>index.php#features">Beneficios</a></li>
+          <li><a class="nav__link" href="<?= BASE_URL ?>sobreNosotros.html">Sobre Nosotros</a></li>
+
+          <div class="right-buttons">
+            <li><a class="nav__link btn-register" href="<?= BASE_URL ?>registro.php">Registrarme</a></li>
+            <li><a class="nav__link btn-login" href="<?= BASE_URL ?>iniciarSesion.php">Iniciar Sesión</a></li>
+          </div>
+        <?php endif; ?>
+      </ul>
+    </nav>
+  </div>
+</header>

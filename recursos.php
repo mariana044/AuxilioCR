@@ -1,45 +1,35 @@
 <?php
+session_start();
+require_once 'conexion.php';
 include 'header.php';
-include 'conexion.php'; 
-
-
-$guias = $conn->query("SELECT titulo, archivo_url FROM recursos WHERE tipo='guia'");
-$contactos = $conn->query("SELECT titulo, descripcion FROM recursos WHERE tipo='contacto'");
-$faqs = $conn->query("SELECT pregunta, respuesta FROM preguntas_frecuentes");
 ?>
+<main class="recursos-section" style="text-align:center; padding:30px;">
+  <h2>Centro de Recursos</h2>
 
-<main class="contenedor-recursos">
-  <title>Centro de recursos</title>
+  <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:20px;">
+    <!-- Guías (desde BD, se listan en guias.php) -->
+    <a href="guias.php"
+       class="recurso-card"
+       style="display:block;width:260px;background:#fff;padding:20px;text-decoration:none;color:inherit;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,.1);border-top:4px solid green;cursor:pointer;">
+      <h3 style="color:#003366;margin:0 0 6px;">Guías De Primeros Auxilios</h3>
+      <small>Ver todas las guías</small>
+    </a>
 
+    <!-- Números (desde BD) -->
+    <a href="numeros_emergencia.php"
+       class="recurso-card"
+       style="display:block;width:260px;background:#fff;padding:20px;text-decoration:none;color:inherit;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,.1);border-top:4px solid red;cursor:pointer;">
+      <h3 style="color:#003366;margin:0 0 6px;">Números De Emergencia</h3>
+      <small>Directorio nacional</small>
+    </a>
 
-<section class="card guia">
-  <h3>Guías De Primeros Auxilios</h3>
-  <ul>
-    <?php while($g = $guias->fetch_assoc()): ?>
-      <li>
-      <?= htmlspecialchars($g['titulo']) ?>
-      <a href="<?= htmlspecialchars($g['archivo_url']) ?>" target="_blank">[PDF]</a>
-      </li>
-    <?php endwhile; ?>
-  </ul>
-</section>
-
-<section class="card emergencias">
-  <h3>Números De Emergencia</h3>
-  <ul>
-    <?php while($c = $contactos->fetch_assoc()): ?>
-    <li><?=htmlspecialchars($c['titulo']) ?> - <?= htmlspecialchars($c['descripcion']) ?></li>
-    <?php endwhile; ?>
-  </ul>
-</section>
-
-<section class="card preguntas">
-  <h3>Preguntas Frecuentes</h3>
-  <ul>
-    <?php while($p = $faqs->fetch_assoc()): ?>
-      <li><strong><?= htmlspecialchars($p['pregunta']) ?></strong> <?= htmlspecialchars($p['respuesta']) ?></li>
-    <?php endwhile; ?>
-  </ul>
-</section>
+    <!-- FAQ (desde BD) -->
+    <a href="preguntas_frecuentes.php"
+       class="recurso-card"
+       style="display:block;width:260px;background:#fff;padding:20px;text-decoration:none;color:inherit;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,.1);border-top:4px solid blue;cursor:pointer;">
+      <h3 style="color:#003366;margin:0 0 6px;">Preguntas Frecuentes</h3>
+      <small>Respuestas rápidas</small>
+    </a>
+  </div>
 </main>
 <?php include 'footer.php'; ?>

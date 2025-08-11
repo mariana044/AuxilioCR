@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $sql = "SELECT * FROM usuarios WHERE correo = '$correo' LIMIT 1";
     $res = $conn->query($sql);
-
+}
     if ($res && $res->num_rows === 1) {
         $usuario = $res->fetch_assoc();
         if (password_verify($contrasena, $usuario['contrasena'])) {
@@ -18,26 +18,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 'correo'       => $usuario['correo'],
                 'tipo_usuario' => $usuario['tipo_usuario']
             ];
+          }
+    switch ($usuario['tipo_usuario']) {
+  case 'usuario':
+    header("Location: panelCiudadano.php");
+    break;
+  case 'voluntario':
+    header("Location: panelVoluntario.php");
+    break;
+  case 'admin':
+    header("Location: panelAdmin.php");
+    break;
+  default:
+    header("Location: iniciarSesion.php?error=2");
+}
+exit;
 
-            switch ($usuario['tipo_usuario']) {
-                case 'ciudadano':
-                    header("Location: panelCiudadano.php");
-                    break;
-                case 'voluntario':
-                    header("Location: panelVoluntario.php");
-                    break;
-                case 'admin':
-                    header("Location: panelAdmin.php");
-                    break;
-                default:
-                    echo "Tipo de usuario no reconocido.";
-                    exit;
-            }
-            exit;
-        }
-    }
-    header("Location: iniciarSesion.php?error=1");
-    exit;
 }
 ?>
 

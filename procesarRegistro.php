@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $h   = password_hash($p, PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO usuarios (nombre, correo, contrasena, tipo_usuario)
->>>>>>> origin/main
+
             VALUES ('$n','$e','$h','$t')";
     if ($conn->query($sql) === TRUE) {
         header("Location: registro_exitoso.php");
