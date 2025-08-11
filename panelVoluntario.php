@@ -24,10 +24,9 @@ $nombre = $_SESSION['usuario']['nombre'];
         </div>
 
         <nav class="voluntario-menu">
-            <<a href="eventos_disponibles.php" class="btn-voluntario">Atender Emergencias</a>
+            <a href="eventos_disponibles.php" class="btn-voluntario">Atender Emergencias</a>
             <a href="historialAsistencia.php" class="btn-voluntario">Historial de Asistencia</a>
             <a href="recursos.php" class="btn-voluntario">Centro de Recursos</a>
-            <a href="cerrarSesion.php" class="btn-voluntario salir">Cerrar Sesión</a>
         </nav>
 
         <section class="voluntario-info">
